@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2015-2019 Alwin Esch (Team Kodi)
+ *  Copyright (C) 2015-2020 Alwin Esch (Team Kodi)
  *  This file is part of Kodi - https://kodi.tv
  *
  *  SPDX-License-Identifier: GPL-3.0-or-later
@@ -17,7 +17,7 @@
 
 #include <iomanip>
 
-class CDeleteCookiesCallback : public CefDeleteCookiesCallback
+class ATTRIBUTE_HIDDEN CDeleteCookiesCallback : public CefDeleteCookiesCallback
 {
 public:
   CDeleteCookiesCallback(CBrowserDialogCookie* cookieHandler)
@@ -43,7 +43,7 @@ private:
 
 //------------------------------------------------------------------------------
 
-class CCookieVisitor : public CefCookieVisitor
+class ATTRIBUTE_HIDDEN CCookieVisitor : public CefCookieVisitor
 {
 public:
   CCookieVisitor(CBrowserDialogCookie* cookieHandler, CefCookie* deleteThis = nullptr)
@@ -116,7 +116,7 @@ void CBrowserDialogCookie::AddGUIEntry(const CefCookie& cookie)
   if (!m_inited)
     return;
 
-  kodi::gui::ListItemPtr item(new kodi::gui::CListItem(CefString(&cookie.name).ToString()));
+  std::shared_ptr<kodi::gui::CListItem> item(new kodi::gui::CListItem(CefString(&cookie.name).ToString()));
 
   item->SetProperty("content", CefString(&cookie.value).ToString());
   item->SetProperty("domain", CefString(&cookie.domain).ToString());

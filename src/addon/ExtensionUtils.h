@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2015-2019 Alwin Esch (Team Kodi)
+ *  Copyright (C) 2015-2020 Alwin Esch (Team Kodi)
  *  This file is part of Kodi - https://kodi.tv
  *
  *  SPDX-License-Identifier: GPL-3.0-or-later
@@ -15,11 +15,11 @@
 
 #pragma once
 
-#include <string>
-
 #include "include/cef_extension.h"
 #include "include/cef_extension_handler.h"
 #include "include/wrapper/cef_resource_manager.h"
+
+#include <string>
 
 namespace ExtensionUtils
 {
@@ -77,7 +77,6 @@ std::string GetExtensionURL(CefRefPtr<CefExtension> extension);
 // Look for a browser_action.default_icon manifest value and return the resource
 // path. If |internal| is non-NULL it will be set to true if the extension is
 // handled internally.
-std::string GetExtensionIconPath(CefRefPtr<CefExtension> extension,
-                                 bool* internal);
+std::string GetExtensionIconPath(CefRefPtr<CefExtension> extension, bool* internal);
 
-}  /* namespace ExtensionUtils */
+} /* namespace ExtensionUtils */

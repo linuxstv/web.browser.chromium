@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2015-2019 Alwin Esch (Team Kodi)
+ *  Copyright (C) 2015-2020 Alwin Esch (Team Kodi)
  *  This file is part of Kodi - https://kodi.tv
  *
  *  SPDX-License-Identifier: GPL-3.0-or-later
@@ -18,7 +18,7 @@
 #include <memory>
 #include <mutex>
 
-class CDownloadItem
+class ATTRIBUTE_HIDDEN CDownloadItem
 {
 public:
   CDownloadItem(const std::string& url, CefRefPtr<CefDownloadItemCallback> callback);
@@ -63,7 +63,7 @@ private:
   kodi::gui::dialogs::CExtendedProgress* m_progressDialog = nullptr;
 };
 
-class CWebBrowserDownloadHandler : public CefDownloadHandler, public kodi::gui::CWindow
+class ATTRIBUTE_HIDDEN CWebBrowserDownloadHandler : public CefDownloadHandler, public kodi::gui::CWindow
 {
 public:
   CWebBrowserDownloadHandler();
@@ -76,7 +76,7 @@ public:
   // Kodi's GUI related childs
   bool OnInit() override;
   bool OnClick(int controlId) override;
-  bool OnAction(int actionId, uint32_t buttoncode, wchar_t unicode) override;
+  bool OnAction(ADDON_ACTION actionId) override;
   void GetContextButtons(int itemNumber, std::vector< std::pair<unsigned int, std::string> > &buttons) override;
   bool OnContextButton(int itemNumber, unsigned int button) override;
 

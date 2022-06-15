@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2015-2019 Alwin Esch (Team Kodi)
+ *  Copyright (C) 2015-2020 Alwin Esch (Team Kodi)
  *  This file is part of Kodi - https://kodi.tv
  *
  *  SPDX-License-Identifier: GPL-3.0-or-later
@@ -98,7 +98,7 @@ bool CV8Handler::Execute(const CefString& name,
     browserMessage->GetArgumentList()->SetInt(5, displayTime);
     browserMessage->GetArgumentList()->SetBool(6, withSound);
     browserMessage->GetArgumentList()->SetInt(7, messageTime);
-    m_renderer->GetBrowser()->SendProcessMessage(PID_BROWSER, browserMessage);
+    m_renderer->GetBrowser()->GetMainFrame()->SendProcessMessage(PID_BROWSER, browserMessage);
     return true;
   }
 
@@ -132,10 +132,8 @@ void CV8Handler::OnWebKitInitialized(CWebAppRenderer* renderer)
     ""
     "const ADDON_LOG_DEBUG = " + std::to_string(ADDON_LOG_DEBUG) + ";"
     "const ADDON_LOG_INFO = " + std::to_string(ADDON_LOG_INFO) + ";"
-    "const ADDON_LOG_NOTICE = " + std::to_string(ADDON_LOG_NOTICE) + ";"
     "const ADDON_LOG_WARNING = " + std::to_string(ADDON_LOG_WARNING) + ";"
     "const ADDON_LOG_ERROR = " + std::to_string(ADDON_LOG_ERROR) + ";"
-    "const ADDON_LOG_SEVERE = " + std::to_string(ADDON_LOG_SEVERE) + ";"
     "const ADDON_LOG_FATAL = " + std::to_string(ADDON_LOG_FATAL) + ";"
     ""
     "(function() {"

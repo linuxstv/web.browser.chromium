@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2015-2019 Alwin Esch (Team Kodi)
+ *  Copyright (C) 2015-2020 Alwin Esch (Team Kodi)
  *  This file is part of Kodi - https://kodi.tv
  *
  *  SPDX-License-Identifier: GPL-3.0-or-later
@@ -13,7 +13,7 @@
 #include <kodi/gui/Window.h>
 #include <mutex>
 
-class CBrowserDialogCookie : public kodi::gui::CWindow
+class ATTRIBUTE_HIDDEN CBrowserDialogCookie : public kodi::gui::CWindow
 {
 public:
   CBrowserDialogCookie();

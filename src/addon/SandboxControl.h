@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2015-2019 Alwin Esch (Team Kodi)
+ *  Copyright (C) 2015-2020 Alwin Esch (Team Kodi)
  *  This file is part of Kodi - https://kodi.tv
  *
  *  SPDX-License-Identifier: GPL-3.0-or-later
@@ -10,7 +10,7 @@
 
 namespace SandboxControl
 {
-  /*!
+/*!
    * @brief To Set access rights of "chrome_sandbox" binary
    *
    * This call open dialog where user becomes asked about root password.
@@ -24,5 +24,5 @@ namespace SandboxControl
    *
    * @return true if successfull done
    */
-  bool SetSandbox();
-}
+bool SetSandbox();
+} // namespace SandboxControl

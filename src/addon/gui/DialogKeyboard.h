@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2015-2019 Alwin Esch (Team Kodi)
+ *  Copyright (C) 2015-2020 Alwin Esch (Team Kodi)
  *  This file is part of Kodi - https://kodi.tv
  *
  *  SPDX-License-Identifier: GPL-3.0-or-later
@@ -14,7 +14,7 @@
 
 enum KEYBOARD {CAPS, LOWER, SYMBOLS};
 
-class CBrowserDialogKeyboard : public kodi::gui::CWindow
+class ATTRIBUTE_HIDDEN CBrowserDialogKeyboard : public kodi::gui::CWindow
 {
 public:
   CBrowserDialogKeyboard();
@@ -22,7 +22,7 @@ public:
   void Show(CefRefPtr<CWebBrowserClient> client, cef_text_input_mode_t input_mode);
 
   bool OnInit() override;
-  bool OnAction(int actionId, uint32_t buttoncode, wchar_t unicode) override;
+  bool OnAction(const kodi::gui::input::CAction& action) override;
   bool OnClick(int controlId) override;
 
 private:

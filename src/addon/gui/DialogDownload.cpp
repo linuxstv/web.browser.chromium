@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2015-2019 Alwin Esch (Team Kodi)
+ *  Copyright (C) 2015-2020 Alwin Esch (Team Kodi)
  *  This file is part of Kodi - https://kodi.tv
  *
  *  SPDX-License-Identifier: GPL-3.0-or-later
@@ -459,7 +459,7 @@ void CWebBrowserDownloadHandler::UpdateEntry(std::shared_ptr<CDownloadItem> down
     if (m_items[i]->GetPath() != downloadItem->GetPath())
       continue;
 
-    kodi::gui::ListItemPtr item = GetListItem(i);
+    std::shared_ptr<kodi::gui::CListItem> item = GetListItem(i);
     std::string info;
     if (complete)
     {
@@ -503,7 +503,7 @@ bool CWebBrowserDownloadHandler::OnInit()
 
   for (const auto& file : m_items)
   {
-    kodi::gui::ListItemPtr item(new kodi::gui::CListItem(file->GetName()));
+    std::shared_ptr<kodi::gui::CListItem> item(new kodi::gui::CListItem(file->GetName()));
 
     std::string info;
     if (file->IsComplete())
@@ -533,15 +533,15 @@ bool CWebBrowserDownloadHandler::OnInit()
   return true;
 }
 
-bool CWebBrowserDownloadHandler::OnAction(int actionId, uint32_t buttoncode, wchar_t unicode)
+bool CWebBrowserDownloadHandler::OnAction(ADDON_ACTION actionId)
 {
-  if (actionId == ACTION_PREVIOUS_MENU || actionId ==ACTION_NAV_BACK)
+  if (actionId == ADDON_ACTION_PREVIOUS_MENU || actionId == ADDON_ACTION_NAV_BACK)
   {
     std::lock_guard<std::mutex> lock(m_mutex);
     ClearList();
     m_items.clear();
   }
-  return CWindow::OnAction(actionId, buttoncode, unicode);
+  return CWindow::OnAction(actionId);
 }
 
 void CWebBrowserDownloadHandler::GetContextButtons(int itemNumber, std::vector< std::pair<unsigned int, std::string> > &buttons)
